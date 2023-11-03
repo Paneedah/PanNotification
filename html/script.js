@@ -53,16 +53,6 @@ function parseFiveMColorCodes(text) {
 
 const activeNotifications = {};
 
-function generateNotificationKey(type, title, body) {
-    // Create a unique string that represents the combination of type, title, and body
-    return `${type}_${title}_${body}`;
-}
-
-function isDuplicateNotification(type, title, body) {
-    const key = generateNotificationKey(type, title, body);
-    return activeNotifications[key];
-}
-
 function Notify(event) {
     (() => {
         const { type, title, body } = {
@@ -71,9 +61,8 @@ function Notify(event) {
             body: event.data.data_body
         };
 
-        const key = generateNotificationKey(type, title, body);
-        if (isDuplicateNotification(type, title, body)) {
-            console.log('Duplicate notification, extending display time.');
+        const key = `${type}_${title}_${body}`;
+        if (activeNotifications[key]) {
             const notification = activeNotifications[key];
             notification.remainingTime = Math.min(notification.remainingTime + 5000, 10000);
             clearTimeout(notification.timeoutId);
