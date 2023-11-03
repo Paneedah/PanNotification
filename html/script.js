@@ -51,8 +51,49 @@ function parseFiveMColorCodes(text) {
     return text;
 }
 
+const activeNotifications = {};
+
+function generateNotificationKey(type, title, body) {
+    // Create a unique string that represents the combination of type, title, and body
+    return `${type}_${title}_${body}`;
+}
+
+function isDuplicateNotification(type, title, body) {
+    const key = generateNotificationKey(type, title, body);
+    return activeNotifications[key];
+}
+
 function Notify(event) {
     (() => {
+        const { type, title, body } = {
+            type: event.data.data_type,
+            title: event.data.data_title,
+            body: event.data.data_body
+        };
+
+        const key = generateNotificationKey(type, title, body);
+        if (isDuplicateNotification(type, title, body)) {
+            console.log('Duplicate notification, extending display time.');
+            const notification = activeNotifications[key];
+            notification.remainingTime = Math.min(notification.remainingTime + 5000, 10000);
+            clearTimeout(notification.timeoutId);
+            notification.timeoutId = setTimeout(() => {
+                notification.element.remove();
+                delete activeNotifications[key];
+                notificationElement.remove();
+            }, notification.remainingTime);
+            return;
+        }
+
+        activeNotifications[key] = true;
+
+        const notificationElement = document.createElement('div');
+        notificationElement.classList.add('notification');
+        notificationElement.dataset.type = type;
+        notificationElement.dataset.title = title;
+        notificationElement.dataset.body = body;
+
+        document.getElementById('notification-area').appendChild(notificationElement);
 
         const id_notification = document.createElement("div");
         let id = Math.random().toString(36).substr(2, 10);
@@ -76,14 +117,7 @@ function Notify(event) {
 
         const bodyElement = document.createElement("div");
         bodyElement.classList.add("notification_body");
-        //bodyElement.innerText = parseFiveMColorCodes(event.data.data_body);
-
-        const newDiv = document.createElement('div');
-        newDiv.id = 'colored-text-display';
-        bodyElement.appendChild(newDiv);
-
-        const parsedText = parseFiveMColorCodes(parseFiveMColorCodes(event.data.data_body));
-        newDiv.innerHTML = parsedText;
+        bodyElement.innerHTML = parseFiveMColorCodes(event.data.data_body);
 
         const notification = document.createElement("div");
         notification.classList.add("notification", event.data.data_type);
@@ -95,9 +129,19 @@ function Notify(event) {
         const notificationArea = document.getElementById("notification-area");
         notificationArea.appendChild(id_notification);
 
-        setTimeout(() => {
+        let remainingTime = 5000;
+
+        const timeoutId = setTimeout(() => {
             id_notification.remove();
-        }, 5000);
+            delete activeNotifications[key];
+            notificationElement.remove();
+        }, remainingTime);
+
+        activeNotifications[key] = {
+            element: id_notification,
+            timeoutId: timeoutId,
+            remainingTime: remainingTime
+        };
     })();
 }
 
