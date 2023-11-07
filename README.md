@@ -9,7 +9,7 @@ Only became a thing because I hate the default FiveM notifications.
 ### Client
 
 ```lua
-exports.panNotifications:DisplayNotification({
+exports.PanNotifications:DisplayNotification({
     title = "Testing info message!",
     body = "Testing info message!",
     type = 'info',
