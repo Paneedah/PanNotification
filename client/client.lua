@@ -1,4 +1,4 @@
-function displayNotification(alert)
+function DisplayNotification(alert)
     local title = alert.title or ' '
     local body = alert.body or ' '
     local type = alert.type or 'info'
@@ -15,7 +15,7 @@ end
 
 RegisterNetEvent('panNotifications:notify')
 AddEventHandler('panNotifications:notify', function(alert)
-    exports.PanNotification:displayNotification({
+    exports.PanNotifications:DisplayNotification({
         title = alert.title,
         body = alert.body,
         type = alert.type,
