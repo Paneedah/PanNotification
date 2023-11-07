@@ -9,7 +9,7 @@ Only became a thing because I hate the default FiveM notifications.
 ### Client
 
 ```lua
-exports.panNotifications:DisplayNotification({
+exports.PanNotifications:DisplayNotification({
     title = "Testing info message!",
     body = "Testing info message!",
     type = 'info',
@@ -28,14 +28,16 @@ TriggerClientEvent('panNotifications:notify', source, {
 })
 ```
 
+## Example Code:
+![image](https://github.com/Paneedah/PanNotifications/assets/76911089/9630f8a2-447e-4986-b1ce-b6c87c575659)
+![image](https://github.com/Paneedah/PanNotifications/assets/76911089/0f82c83e-5ead-4a69-bd26-c9cfc1199793)
+
 ### Available Types
-- info
-- error
-- warning
-- success
+- grey
+- red
+- yellow
+- green
+- blue
+- purple
 
-### Output
-
-Here is an example of what the output looks like for each type (in the same order as above).
-
-![OUTPUT_IMAGE](https://cdn.discordapp.com/attachments/902317431047979069/1169810797103419453/Screenshot_2023-11-03_012827.png?ex=6556c234&is=65444d34&hm=cc76f32d2e6a26572cd353cbbb3e13ca604086b5d08da107d485a4c743b6f139&)
+![Screenshot 2023-11-07 212109](https://github.com/Paneedah/PanNotifications/assets/76911089/89c2853b-41e1-4b4c-afbc-8cc807491a00)

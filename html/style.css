@@ -56,28 +56,40 @@
 	font-weight: 500;
 }
 
-.notification.info {
+.notification.grey {
   	animation: show_slide 1s ease forwards;
   	border-left: 8px solid #dedada;
   	background-color: rgba(88, 88, 88, 0.65);
 }
 
-.notification.success {
+.notification.green {
   	animation: show_slide 1s ease forwards;
   	border-left: 8px solid #39f652;
-  	background-color: rgba(90, 173, 127, 0.65);
+  	background-color: rgba(67, 129, 95, 0.7);
 }
 
-.notification.warning {
+.notification.yellow {
   	animation: show_slide 1s ease forwards;
   	border-left: 8px solid #f6ab32;
-  	background-color: rgba(148, 146, 36, 0.65)
+  	background-color: rgba(119, 117, 30, 0.70)
 }
 
-.notification.error {
+.notification.red {
   	animation: show_slide 1s ease forwards;
   	border-left: 8px solid #fa2d2d;
-  	background-color: rgba(165, 60, 60, 0.7);
+  	background-color: rgba(165, 60, 60, 0.65);
+}
+
+.notification.purple {
+  	animation: show_slide 1s ease forwards;
+  	border-left: 8px solid #a32dfa;
+  	background-color: rgba(88, 60, 165, 0.65);
+}
+
+.notification.blue {
+  	animation: show_slide 1s ease forwards;
+  	border-left: 8px solid #2d7dfa;
+  	background-color: rgba(60, 60, 165, 0.65);
 }
 
 @keyframes show_slide {

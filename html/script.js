@@ -23,8 +23,7 @@ function parseFiveMColorCodes(text) {
         '~m~': 'darkgrey',
         '~u~': 'black',
         '~w~': 'white',
-        '~s~': 'white',
-        '~sv~': 'silver',
+        '~s~': 'silver',
         '~q~': 'pink',
         '~t~': 'teal',
         '~l~': 'lime',
@@ -53,12 +52,12 @@ function parseFiveMColorCodes(text) {
 
 const activeNotifications = {};
 
-function Notify(event) {
+function sendNotification(data) {
     (() => {
         const { type, title, body } = {
-            type: event.data.data_type,
-            title: event.data.data_title,
-            body: event.data.data_body
+            type: data.type,
+            title: data.title,
+            body: data.body
         };
 
         const key = `${type}_${title}_${body}`;
@@ -92,24 +91,24 @@ function Notify(event) {
         const notificationHeader = document.createElement("div");
         notificationHeader.classList.add("notification_header");
 
-        const iconName = event.data.data_icon;
+        const iconName = data.icon;
         const mainIcon = document.createElement("div");
         mainIcon.classList.add("data_icon");
         mainIcon.innerHTML = '<i class="' + iconName + '"></i>';
 
         const titleElement = document.createElement("div");
         titleElement.classList.add("notification_title");
-        titleElement.innerText = parseFiveMColorCodes(event.data.data_title);
+        titleElement.innerText = parseFiveMColorCodes(data.title);
 
         notificationHeader.appendChild(mainIcon);
         notificationHeader.appendChild(titleElement);
 
         const bodyElement = document.createElement("div");
         bodyElement.classList.add("notification_body");
-        bodyElement.innerHTML = parseFiveMColorCodes(event.data.data_body);
+        bodyElement.innerHTML = parseFiveMColorCodes(data.body);
 
         const notification = document.createElement("div");
-        notification.classList.add("notification", event.data.data_type);
+        notification.classList.add("notification", data.type);
         notification.appendChild(notificationHeader);
         notification.appendChild(bodyElement);
 
@@ -119,7 +118,6 @@ function Notify(event) {
         notificationArea.appendChild(id_notification);
 
         let remainingTime = 5000;
-
         const timeoutId = setTimeout(() => {
             id_notification.remove();
             delete activeNotifications[key];
@@ -135,11 +133,10 @@ function Notify(event) {
 }
 
 window.addEventListener('message', function(event) {
-  if (event.data.type === "notification_main" && event.data.activate === true) {
-      if (!event.data.data_type.match(/^(warning|success|error|info)$/)) {
-          return
-      }
+    let data = event.data;
+    if (data === null)
+        return;
 
-      Notify(event);
-  }
+    if (data.notification === "show_notification" && data.type.match(/^(yellow|green|red|grey|purple|blue)$/))
+        sendNotification(data);
 })

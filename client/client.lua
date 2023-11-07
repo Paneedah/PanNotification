@@ -1,15 +1,10 @@
 function DisplayNotification(alert)
-    local title = alert.title or ' '
-    local body = alert.body or ' '
-    local type = alert.type or 'info'
-    local icon = alert.icon or 'fas fa-check fa-2x'
     SendNUIMessage({
-        type = 'notification_main',
-        activate = true,
-        data_type = type,
-        data_title = title,
-        data_body = '~w~'..body,
-        data_icon = icon
+        action = 'show_notification',
+        type = alert.type or 'info',
+        title = alert.title or ' ',
+        body = '~w~'..alert.body or ' ',
+        icon = alert.icon or 'fas fa-check fa-2x'
     })
 end
 
