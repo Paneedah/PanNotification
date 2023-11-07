@@ -23,7 +23,8 @@ function parseFiveMColorCodes(text) {
         '~m~': 'darkgrey',
         '~u~': 'black',
         '~w~': 'white',
-        '~s~': 'silver',
+        '~s~': 'white',
+        '~sv~': 'silver',
         '~q~': 'pink',
         '~t~': 'teal',
         '~l~': 'lime',
@@ -52,8 +53,9 @@ function parseFiveMColorCodes(text) {
 
 const activeNotifications = {};
 
-function sendNotification(data) {
-    (() => {
+window.addEventListener('message', function(event) {
+    let data = event.data;
+    if (data !== null && data.action === "show_notification" && data.type.match(/^(yellow|green|red|grey|purple|blue)$/)) {
         const { type, title, body } = {
             type: data.type,
             title: data.title,
@@ -129,14 +131,5 @@ function sendNotification(data) {
             timeoutId: timeoutId,
             remainingTime: remainingTime
         };
-    })();
-}
-
-window.addEventListener('message', function(event) {
-    let data = event.data;
-    if (data === null)
-        return;
-
-    if (data.notification === "show_notification" && data.type.match(/^(yellow|green|red|grey|purple|blue)$/))
-        sendNotification(data);
+    }
 })
