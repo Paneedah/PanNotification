@@ -17,4 +17,4 @@ client_scripts {
     'client/client.lua'
 }
 
-export 'displayNotification'
+export 'DisplayNotification'
