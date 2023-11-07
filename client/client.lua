@@ -3,7 +3,7 @@ function DisplayNotification(alert)
         action = 'show_notification',
         type = alert.type or 'grey',
         title = alert.title or ' ',
-        body = '~w~'..alert.body or ' ',
+        body = alert.body and '~w~'..alert.body or ' ',
         icon = alert.icon or 'fas fa-check fa-2x'
     })
 end
