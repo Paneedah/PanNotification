@@ -29,9 +29,10 @@ TriggerClientEvent('panNotifications:notify', source, {
 ```
 
 ## Example Code:
-![image](https://github.com/Paneedah/PanNotifications/assets/76911089/9630f8a2-447e-4986-b1ce-b6c87c575659)
-![image](https://github.com/Paneedah/PanNotifications/assets/76911089/0f82c83e-5ead-4a69-bd26-c9cfc1199793)
-![image](https://github.com/Paneedah/PanNotifications/assets/76911089/e7798dc6-9e5f-401b-9d89-60ff9d5fc722)
+![image](https://github.com/Paneedah/PanNotifications/assets/76911089/1f3dabeb-fcf2-42f0-b10c-7e7eb7ffa52f)
+![image](https://github.com/Paneedah/PanNotifications/assets/76911089/07353542-7b1a-49ae-acec-f26fa00ba648)
+
+You can find available icons [here](https://fontawesome.com/search?o=r&m=free).
 
 ### Available Types
 - grey
