@@ -18,4 +18,4 @@ AddEventHandler('panNotifications:notify', function(alert)
     })
 end)
 
-Citizen.Wait(1000)
+Citizen.Wait(500)
