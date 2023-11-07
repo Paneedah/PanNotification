@@ -96,7 +96,7 @@ window.addEventListener('message', function(event) {
         const iconName = data.icon;
         const mainIcon = document.createElement("div");
         mainIcon.classList.add("data_icon");
-        mainIcon.innerHTML = '<i class="' + iconName + '"></i>';
+        mainIcon.innerHTML = '<i class="' + iconName + ' fa-2x' + '"></i>';
 
         const titleElement = document.createElement("div");
         titleElement.classList.add("notification_title");
