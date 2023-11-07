@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 author 'Paneedah'
 description 'A simple script that handles notifications for FiveM.'
-version '1.1.4'
+version '1.1.5'
 
 ui_page "html/index.html"
 

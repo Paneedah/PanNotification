@@ -13,7 +13,7 @@ exports.PanNotifications:DisplayNotification({
     title = "Testing info message!",
     body = "Testing info message!",
     type = 'info',
-    icon = "fab fa-angellist fa-2x"
+    icon = "fab fa-angellist"
 })
 ```
 
@@ -24,7 +24,7 @@ TriggerClientEvent('panNotifications:notify', source, {
     title = "Testing info message!",
     body = "Testing info message!",
     type = 'info',
-    icon = "fab fa-angellist fa-2x"
+    icon = "fab fa-angellist"
 })
 ```
 
