@@ -12,7 +12,7 @@ Only became a thing because I hate the default FiveM notifications.
 exports.PanNotifications:DisplayNotification({
     title = "Testing info message!",
     body = "Testing info message!",
-    type = 'info',
+    type = 'grey',
     icon = "fab fa-angellist"
 })
 ```
@@ -23,7 +23,7 @@ exports.PanNotifications:DisplayNotification({
 TriggerClientEvent('panNotifications:notify', source, {
     title = "Testing info message!",
     body = "Testing info message!",
-    type = 'info',
+    type = 'grey',
     icon = "fab fa-angellist"
 })
 ```
