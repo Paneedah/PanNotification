@@ -55,6 +55,7 @@
 
 .notification_body {
 	font-weight: 500;
+	white-space: pre-line;
 }
 
 .notification.grey {

@@ -106,7 +106,7 @@ window.addEventListener('message', function(event) {
 
         const bodyElement = document.createElement("div");
         bodyElement.classList.add("notification_body");
-        bodyElement.innerHTML = parseFiveMColorCodes(data.body.replace(/\n/g, '<br>'));
+        bodyElement.innerHTML = parseFiveMColorCodes(data.body);
 
         const notification = document.createElement("div");
         notification.classList.add("notification", data.type);
