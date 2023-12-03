@@ -69,7 +69,7 @@ window.addEventListener('message', function(event) {
             notification.timeoutId = setTimeout(() => {
                 notification.element.remove();
                 delete activeNotifications[key];
-                notificationElement.remove();
+                if (notificationElement) notificationElement.remove();
             }, notification.remainingTime);
             return;
         }
