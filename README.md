@@ -1,3 +1,13 @@
+# ARCHIVED!
+
+THIS IS NO LONGER GETTING MAINTAINED OR DEVELOPED.
+
+THIS IS A FORK OF ANOTHER FIVEM RESOURCE.
+
+I WILL BE MAKING A NEW PROPER ONE LATER.
+
+---
+
 # 💬 PanNotifications
 
 PanNotifications is a simple FiveM resource that sends notifications to players.
